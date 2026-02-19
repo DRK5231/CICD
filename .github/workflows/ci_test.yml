@@ -1,0 +1,24 @@
+name: Python CI
+
+on:
+  push:
+    paths:
+      - '**.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Run app
+        run: pytest
+
